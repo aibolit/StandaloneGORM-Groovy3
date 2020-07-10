@@ -3,17 +3,14 @@ apply plugin: "application"
 
 repositories {
     mavenCentral()
+    jcenter()
     mavenLocal()
 }
 
 mainClassName = "app.Main"
 
 dependencies {
-    compile "org.grails:grails-datastore-gorm-hibernate5:6.1.8.RELEASE"
+    compile 'org.codehaus.groovy:groovy-all:3.0.4'
+    compile "org.grails:grails-datastore-gorm-hibernate5:7.0.3.RELEASE"
     runtime "com.h2database:h2:1.4.192"
-    
-    runtime 'com.bloomberg.comdb2:cdb2jdbc:2.0.0'
-    runtime 'com.bloomberg.comdb2:cdb2hibernate:0.1.0'
 }
-
-run.doFirst { environment 'CDB2JDBC_STATEMENT_QUERYEFFECTS', 'true' }
