@@ -10,8 +10,8 @@ repositories {
 mainClassName = "app.Main"
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.5.12'
-    compile "org.grails:grails-datastore-gorm-hibernate5:7.0.4.RELEASE"
-    compile  'org.slf4j:slf4j-simple:1.7.30'
+    implementation 'org.codehaus.groovy:groovy-all:2.5.12'
+    implementation "org.grails:grails-datastore-gorm-hibernate5:7.0.4.RELEASE"
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
     runtime "com.h2database:h2:1.4.200"
 }
