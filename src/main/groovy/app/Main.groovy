@@ -1,17 +1,18 @@
 package app
 
 import org.grails.orm.hibernate.HibernateDatastore
+import org.hibernate.dialect.H2Dialect
+import org.hibernate.internal.SessionImpl
 import org.springframework.transaction.annotation.Isolation
 
 import domain.*
 import grails.gorm.transactions.Transactional
 
-
 def configuration = [
-        'hibernate.hbm2ddl.auto'    : 'create-drop',
-        'dataSource.url'            : 'jdbc:h2:mem:test',
-        'dataSource.driverClassName': 'org.h2.Driver',
-        'dataSource.logSql'         : 'true'
+        'hibernate.hbm2ddl.auto'    : 'update',
+        'dataSource.url'            : 'jdbc:derby:memory:myDB;create=true',
+        'dataSource.logSql'         : 'true',
+        'dataSource.dialect'        : 'org.hibernate.dialect.DerbyTenSevenDialect',
 ]
 
 def entities = [Person]
@@ -25,7 +26,8 @@ def doSomething() {
 }
 
 println "running"
-datastore.withNewSession {
+
+datastore.withNewSession { SessionImpl s ->
     doSomething()
 }
 
